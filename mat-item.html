@@ -147,12 +147,13 @@ It can be used in conjunction with mat-list.
         <template context="{{}}" is="xp-focused-state" id="xpFocusedState" disabled="{{disabled}}" focused="{{focused}}"></template>
         <template context="{{}}" is="xp-pressed-state" id="xpPressedState" active="{{active}}" disabled="{{disabled}}" invokes="{{invokes}}" pressed="{{pressed}}" target="{{target}}" toggleable="{{toggleable}}"></template>
         <mat-ink id="matItemWrapper" disabled="{{disabled}}" horizontal layout center>
+            <mat-divider id="matItemDivider" inset="{{inset}}" baseline></mat-divider>
             <div id="matItemPrimary" on-xp-active="{{handleStop}}" on-xp-activate="{{handleStop}}" on-xp-input-change="{{handleStop}}" flex>
                 <a id="matItemAnchor">
                     <div id="matItemMain" horizontal layout center>
                         <template if="{{inset}}">
                             <template if="{{primaryType === 'avatar'}}"><mat-avatar action background="{{(active && primaryActiveBackground) || primaryBackground}}" color="{{(active && primaryActiveColor) || primaryColor}}" icon="{{primaryIcon}}" iconSrc="{{primaryIconSrc}}" self-start?="{{!emptyBody}}" style="pointer-events: none;" tabindex="-1"></mat-avatar></template>
-                            <template if="{{primaryType === 'checkbox'}}"><mat-checkbox action self-start?="{{!emptyBody}}" style="pointer-events: none;" tabindex="-1" value="{{active}}"></mat-checkbox></template>
+                            <template if="{{primaryType === 'checkbox'}}"><mat-checkbox action checked="{{active}}"self-start?="{{!emptyBody}}" style="pointer-events: none;" tabindex="-1"></mat-checkbox></template>
                             <template if="{{primaryType !== 'avatar' && primaryType !== 'checkbox'}}"><mat-icon-button action active="{{active}}" activeIcon="{{primaryActiveIcon}}" activeIconSrc="{{primaryActiveIconSrc}}" color="{{(active && primaryActiveColor) || primaryColor}}" icon="{{primaryIcon}}" iconSrc="{{primaryIconSrc}}" self-start?="{{!emptyBody}}" style="pointer-events: none;" tabindex="-1" toggleable="{{toggleable}}"></mat-icon-button></template>
                         </template>
                         <div id="matItemText" flex>
@@ -168,11 +169,10 @@ It can be used in conjunction with mat-list.
                 <template if="{{secondaryIcon || secondaryIconSrc || secondaryMenu || secondaryType === 'checkbox'}}">
                     <template if="{{secondaryMenu}}"><mat-menu-button color="{{secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" target="{{secondaryMenu}}" tabIndex="{{tabIndexBindable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-menu-button></template>
                     <template if="{{!secondaryMenu && secondaryType === 'avatar'}}"><mat-avatar active="{{secondaryActive}}" background="{{(secondaryActive && secondaryActiveBackground) || secondaryBackground}}" color="{{(secondaryActive && secondaryActiveColor) || secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" icon="{{secondaryIcon}}" iconSrc="{{secondaryIconSrc}}" target="{{secondaryTarget}}" tabIndex="{{tabIndexBindable}}" toggleable="{{secondaryToggleable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-avatar></template>
-                    <template if="{{!secondaryMenu && secondaryType === 'checkbox'}}"><mat-checkbox changed="{{secondaryChanged}}" disabled?="{{secondaryDisabled}}" tabIndex="{{tabIndexBindable}}" value="{{secondaryValue}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-checkbox></template>
+                    <template if="{{!secondaryMenu && secondaryType === 'checkbox'}}"><mat-checkbox changed="{{secondaryChanged}}" checked="{{secondaryValue}}" disabled?="{{secondaryDisabled}}" tabIndex="{{tabIndexBindable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-checkbox></template>
                     <template if="{{!secondaryMenu && secondaryType !== 'avatar' && secondaryType !== 'checkbox'}}"><mat-icon-button active="{{secondaryActive}}" activeIcon="{{secondaryActiveIcon}}" activeIconSrc="{{secondaryActiveIconSrc}}" color="{{(secondaryActive && secondaryActiveColor) || secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" icon="{{secondaryIcon}}" iconSrc="{{secondaryIconSrc}}" invokes="{{secondaryInvokes}}" tabIndex="{{tabIndexBindable}}" target="{{secondaryTarget}}" toggleable="{{secondaryToggleable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-icon-button></template>
                 </template>
             </div>
-            <mat-divider id="matItemDivider" inset="{{inset}}" baseline></mat-divider>
             <mat-ripple context="{{}}" id="matItemRipple" style="pointer-events: none"></mat-ripple>
         </mat-ink>
     </template>
@@ -182,6 +182,29 @@ It can be used in conjunction with mat-list.
 
             // MIXINS
             mixins: ['xp-targeter'],
+
+            /*********************************************************************/
+
+            /**
+             * Fired when the active state changes.
+             *
+             * @event xp-active
+             * @param {Element} firer
+             * @param {boolean} isActive
+             * @bubbles
+             */
+
+            /**
+             * Fired when the context element is clicked.
+             *
+             * @event xp-activate
+             * @param {Element} firer
+             * @param {Element} target
+             * @param {string} invokes
+             * @param {boolean} isActive
+             * @bubbles
+             * @cancelable
+             */
 
             /*********************************************************************/
 
