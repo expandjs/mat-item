@@ -53,7 +53,7 @@ It can be used in conjunction with mat-list.
 <link rel="import" href="../xp-pressed-state/xp-pressed-state.html">
 <link rel="import" href="../xp-targeter/xp-targeter.html">
 
-<polymer-element name="mat-item" constructor="MATItemElement" attributes="active data description disabled download emptyBody emptyDescription emptyLabel focused href inset invokes label pressed primaryActiveBackground primaryActiveColor primaryActiveIcon primaryActiveIconSrc primaryBackground primaryColor primaryIcon primaryIconSrc primaryType rel secondaryActive secondaryActiveBackground secondaryActiveColor secondaryActiveIcon secondaryActiveIconSrc secondaryBackground secondaryChanged secondaryChecked secondaryColor secondaryIcon secondaryIconSrc secondaryInvokes secondaryMenu secondaryTarget secondaryToggleable secondaryText secondaryType target toggleable">
+<polymer-element name="mat-item" constructor="MATItemElement" attributes="active data description disabled download emptyBody emptyDescription emptyLabel focused href inset invokes label pressed primaryActiveBackground primaryActiveColor primaryActiveIcon primaryActiveIconSrc primaryBackground primaryColor primaryIcon primaryIconSrc primaryType rel secondaryActive secondaryActiveBackground secondaryActiveColor secondaryActiveIcon secondaryActiveIconSrc secondaryBackground secondaryChanged secondaryChecked secondaryColor secondaryIcon secondaryIconSrc secondaryMenu secondaryTarget secondaryToggleable secondaryText secondaryType target toggleable">
 
     <template>
         <link rel="stylesheet" href="../xp-pressed-state/xp-pressed-state.css">
@@ -145,7 +145,7 @@ It can be used in conjunction with mat-list.
         <template context="{{}}" is="xp-anchor-state" id="xpAnchorState" anchor="{{$.matItemAnchor}}" download="{{download}}" href="{{href}}" rel="{{rel}}" target="{{target}}"></template>
         <template context="{{}}" is="xp-disabled-state" id="xpDisabledState" disabled="{{disabled}}"></template>
         <template context="{{}}" is="xp-focused-state" id="xpFocusedState" disabled="{{disabled}}" focused="{{focused}}"></template>
-        <template context="{{}}" is="xp-pressed-state" id="xpPressedState" active="{{active}}" disabled="{{disabled}}" invokes="{{invokes}}" pressed="{{pressed}}" target="{{target}}" toggleable="{{toggleable}}"></template>
+        <template context="{{}}" is="xp-pressed-state" id="xpPressedState" active="{{active}}" disabled="{{disabled}}" pressed="{{pressed}}" target="{{target}}" toggleable="{{toggleable}}"></template>
         <mat-ink id="matItemWrapper" disabled="{{disabled}}" horizontal layout center>
             <mat-divider id="matItemDivider" inset="{{inset}}" baseline></mat-divider>
             <div id="matItemPrimary" on-xp-active="{{handleStop}}" on-xp-activate="{{handleStop}}" on-xp-input-change="{{handleStop}}" flex>
@@ -170,7 +170,7 @@ It can be used in conjunction with mat-list.
                     <template if="{{secondaryMenu}}"><mat-menu-button color="{{secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" target="{{secondaryMenu}}" tabIndex="{{tabIndexBindable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-menu-button></template>
                     <template if="{{!secondaryMenu && secondaryType === 'avatar'}}"><mat-avatar active="{{secondaryActive}}" background="{{(secondaryActive && secondaryActiveBackground) || secondaryBackground}}" color="{{(secondaryActive && secondaryActiveColor) || secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" icon="{{secondaryIcon}}" iconSrc="{{secondaryIconSrc}}" target="{{secondaryTarget}}" tabIndex="{{tabIndexBindable}}" toggleable="{{secondaryToggleable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-avatar></template>
                     <template if="{{!secondaryMenu && secondaryType === 'checkbox'}}"><mat-checkbox changed="{{secondaryChanged}}" disabled?="{{secondaryDisabled}}" model="{{secondaryValue}}" tabIndex="{{tabIndexBindable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-checkbox></template>
-                    <template if="{{!secondaryMenu && secondaryType !== 'avatar' && secondaryType !== 'checkbox'}}"><mat-icon-button active="{{secondaryActive}}" activeIcon="{{secondaryActiveIcon}}" activeIconSrc="{{secondaryActiveIconSrc}}" color="{{(secondaryActive && secondaryActiveColor) || secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" icon="{{secondaryIcon}}" iconSrc="{{secondaryIconSrc}}" invokes="{{secondaryInvokes}}" tabIndex="{{tabIndexBindable}}" target="{{secondaryTarget}}" toggleable="{{secondaryToggleable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-icon-button></template>
+                    <template if="{{!secondaryMenu && secondaryType !== 'avatar' && secondaryType !== 'checkbox'}}"><mat-icon-button active="{{secondaryActive}}" activeIcon="{{secondaryActiveIcon}}" activeIconSrc="{{secondaryActiveIconSrc}}" color="{{(secondaryActive && secondaryActiveColor) || secondaryColor}}" data="{{data}}" disabled?="{{secondaryDisabled}}" icon="{{secondaryIcon}}" iconSrc="{{secondaryIconSrc}}" tabIndex="{{tabIndexBindable}}" target="{{secondaryTarget}}" toggleable="{{secondaryToggleable}}" on-down="{{handleStop}}" on-click="{{handleStop}}" on-up="{{handleStop}}" action></mat-icon-button></template>
                 </template>
             </div>
             <mat-ripple context="{{}}" id="matItemRipple" style="pointer-events: none"></mat-ripple>
@@ -200,7 +200,6 @@ It can be used in conjunction with mat-list.
              * @event xp-activate
              * @param {Element} firer
              * @param {Element} target
-             * @param {string} invokes
              * @param {boolean} isActive
              * @bubbles
              * @cancelable
@@ -319,15 +318,6 @@ It can be used in conjunction with mat-list.
                  * @readonly
                  */
                 inset: {reflect: true, value: false},
-
-                /**
-                 * The target's method to invoke on press.
-                 *
-                 * @attribute invokes
-                 * @type string
-                 * @default "toggle"
-                 */
-                invokes: {reflect: true, value: 'toggle'},
 
                 /**
                  * The item's label.
@@ -545,15 +535,6 @@ It can be used in conjunction with mat-list.
                  * @default ""
                  */
                 secondaryIconSrc: {reflect: true, value: ''},
-
-                /**
-                 * The secondary target's method to invoke on secondary press.
-                 *
-                 * @attribute secondaryInvokes
-                 * @type string
-                 * @default "toggle"
-                 */
-                secondaryInvokes: {reflect: true, value: 'toggle'},
 
                 /**
                  * The menu to toggle on secondary press.
