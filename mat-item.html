@@ -159,7 +159,7 @@ It can be used in conjunction with mat-list.
                         </template>
                         <div id="matItemText" flex>
                             <template if="{{label}}"><div id="matItemLabel" font-type="subhead">{{label}}</div></template>
-                            <template if="{{description}}"><mat-ink id="matItemDescription" font-type="body" opacity="{{secondary}}">{{description}}</mat-ink></template>
+                            <template if="{{description}}"><mat-ink id="matItemDescription" font-type="body" opacity="secondary">{{description}}</mat-ink></template>
                             <div id="matItemBody" font-type="body" hidden?="{{emptyBody}}"><content id="content"></content></div>
                         </div>
                     </div>
@@ -360,7 +360,7 @@ It can be used in conjunction with mat-list.
                 /**
                  * The item's primary active icon.
                  *
-                 * @attribute activeIcon
+                 * @attribute primaryActiveIcon
                  * @type string
                  * @default ""
                  */
@@ -369,7 +369,7 @@ It can be used in conjunction with mat-list.
                 /**
                  * The item's primary active icon's src.
                  *
-                 * @attribute activeIconSrc
+                 * @attribute primaryActiveIconSrc
                  * @type string
                  * @default ""
                  */
@@ -396,7 +396,7 @@ It can be used in conjunction with mat-list.
                 /**
                  * The item's primary icon.
                  *
-                 * @attribute icon
+                 * @attribute primaryIcon
                  * @type string
                  * @default ""
                  */
@@ -405,7 +405,7 @@ It can be used in conjunction with mat-list.
                 /**
                  * The item's primary icon's src.
                  *
-                 * @attribute iconSrc
+                 * @attribute primaryIconSrc
                  * @type string
                  * @default ""
                  */
@@ -414,7 +414,7 @@ It can be used in conjunction with mat-list.
                 /**
                  * The item's primary type.
                  *
-                 * @attribute type
+                 * @attribute primaryType
                  * @type string
                  * @default "button"
                  */
