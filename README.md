@@ -1,3 +1,3 @@
 # mat-item
 
-See the [`documentation page`](http://www.expandjs.com/elements/mat-item) for more information.
+See the [`documentation page`](http://expandjs.com/elements/mat-item) for more information.
