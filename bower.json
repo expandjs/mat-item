@@ -1,0 +1,49 @@
+{
+  "name": "mat-item",
+  "license": "BSD-3-Clause",
+  "version": "0.9.0",
+  "description": "A custom element used to display a Material Design item",
+  "homepage": "http://expandjs.com/elements/mat-item",
+  "authors": [
+    "Giuliano Rullo <g.rullo@expandjs.com>",
+    "Maurizio Stefàno <m.stefano@expandjs.com>",
+    "Robert Manolea <r.manolea@expandjs.com>"
+  ],
+  "keywords": [
+    "material design",
+    "material item",
+    "material list item",
+    "web app",
+    "html5",
+    "expandjs",
+    "web-components"
+  ],
+  "main": [
+    "mat-item.html"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "expandjs": "ExpandJS/expandjs",
+    "mat-avatar": "ExpandJS/mat-avatar",
+    "mat-checkbox": "ExpandJS/mat-checkbox",
+    "mat-divider": "ExpandJS/mat-divider",
+    "mat-icon-button": "ExpandJS/mat-icon-button",
+    "mat-ink": "ExpandJS/mat-ink",
+    "mat-menu-button": "ExpandJS/mat-menu-button",
+    "mat-ripple": "ExpandJS/mat-ripple",
+    "xp-anchor-behavior": "ExpandJS/xp-anchor-behavior",
+    "xp-pressed-behavior": "ExpandJS/xp-pressed-behavior",
+    "xp-referral-behavior": "ExpandJS/xp-referral-behavior",
+    "polymer": "Polymer/polymer",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout"
+  },
+  "devDependencies": {
+    "mat-demo": "ExpandJS/mat-demo",
+    "mat-icons": "ExpandJS/mat-icons",
+    "mat-menu": "ExpandJS/mat-menu",
+    "mat-option": "ExpandJS/mat-option",
+    "mat-paper": "ExpandJS/mat-paper"
+  }
+}
