@@ -1,7 +1,7 @@
 {
   "name": "mat-item",
   "license": "BSD-3-Clause",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A custom element used to display a Material Design item",
   "homepage": "http://expandjs.com/elements/mat-item",
   "authors": [
@@ -25,25 +25,25 @@
     "**/.*"
   ],
   "dependencies": {
-    "expandjs": "ExpandJS/expandjs",
-    "mat-avatar": "ExpandJS/mat-avatar",
-    "mat-checkbox": "ExpandJS/mat-checkbox",
-    "mat-divider": "ExpandJS/mat-divider",
-    "mat-icon-button": "ExpandJS/mat-icon-button",
-    "mat-ink": "ExpandJS/mat-ink",
-    "mat-menu-button": "ExpandJS/mat-menu-button",
-    "mat-ripple": "ExpandJS/mat-ripple",
-    "xp-anchor-behavior": "ExpandJS/xp-anchor-behavior",
-    "xp-pressed-behavior": "ExpandJS/xp-pressed-behavior",
-    "xp-referral-behavior": "ExpandJS/xp-referral-behavior",
-    "polymer": "Polymer/polymer",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout"
+    "expandjs": "ExpandJS/expandjs#0.9.1",
+    "mat-avatar": "ExpandJS/mat-avatar#0.9.1",
+    "mat-checkbox": "ExpandJS/mat-checkbox#0.9.1",
+    "mat-divider": "ExpandJS/mat-divider#0.9.1",
+    "mat-icon-button": "ExpandJS/mat-icon-button#0.9.1",
+    "mat-ink": "ExpandJS/mat-ink#0.9.1",
+    "mat-menu-button": "ExpandJS/mat-menu-button#0.9.1",
+    "mat-ripple": "ExpandJS/mat-ripple#0.9.1",
+    "xp-anchor-behavior": "ExpandJS/xp-anchor-behavior#0.9.1",
+    "xp-pressed-behavior": "ExpandJS/xp-pressed-behavior#0.9.1",
+    "xp-referral-behavior": "ExpandJS/xp-referral-behavior#0.9.1",
+    "polymer": "Polymer/polymer#^1.0.4",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.2"
   },
   "devDependencies": {
-    "mat-demo": "ExpandJS/mat-demo",
-    "mat-icons": "ExpandJS/mat-icons",
-    "mat-menu": "ExpandJS/mat-menu",
-    "mat-option": "ExpandJS/mat-option",
-    "mat-paper": "ExpandJS/mat-paper"
+    "mat-demo": "ExpandJS/mat-demo#0.9.1",
+    "mat-icons": "ExpandJS/mat-icons#0.9.1",
+    "mat-menu": "ExpandJS/mat-menu#0.9.1",
+    "mat-option": "ExpandJS/mat-option#0.9.1",
+    "mat-paper": "ExpandJS/mat-paper#0.9.1"
   }
 }

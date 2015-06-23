@@ -17,29 +17,29 @@ It can be used in conjunction with mat-list.
 @homepage http://expandjs.com/elements/mat-item
 @demo http://expandjs.com/demo/mat-item
 
-@behavior xp-anchor-behavior http://expandjs.com/elements/xp-anchor-behavior
-@behavior xp-pressed-behavior http://expandjs.com/elements/xp-pressed-behavior
-@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+@behavior xp-anchor-behavior http://expandjs.com/elements/xp-anchor-behavior#0.9.1
+@behavior xp-pressed-behavior http://expandjs.com/elements/xp-pressed-behavior#0.9.1
+@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior#0.9.1
 
-@dependency polymer Polymer/polymer
-@dependency expandjs ExpandJS/expandjs
-@dependency iron-flex-layout PolymerElements/iron-flex-layout
-@dependency mat-avatar ExpandJS/mat-avatar
-@dependency mat-checkbox ExpandJS/mat-checkbox
-@dependency mat-divider ExpandJS/mat-divider
-@dependency mat-icon-button ExpandJS/mat-icon-button
-@dependency mat-ink ExpandJS/mat-ink
-@dependency mat-menu-button ExpandJS/mat-menu-button
-@dependency mat-ripple ExpandJS/mat-ripple
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior
+@dependency polymer Polymer/polymer#^1.0.4
+@dependency expandjs ExpandJS/expandjs#0.9.1
+@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.2
+@dependency mat-avatar ExpandJS/mat-avatar#0.9.1
+@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.1
+@dependency mat-divider ExpandJS/mat-divider#0.9.1
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.1
+@dependency mat-ink ExpandJS/mat-ink#0.9.1
+@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.1
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.1
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.1
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.1
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.1
 
-@devDependency mat-demo ExpandJS/mat-demo
-@devDependency mat-icons ExpandJS/mat-icons
-@devDependency mat-menu ExpandJS/mat-menu
-@devDependency mat-option ExpandJS/mat-option
-@devDependency mat-paper ExpandJS/mat-paper
+@devDependency mat-demo ExpandJS/mat-demo#0.9.1
+@devDependency mat-icons ExpandJS/mat-icons#0.9.1
+@devDependency mat-menu ExpandJS/mat-menu#0.9.1
+@devDependency mat-option ExpandJS/mat-option#0.9.1
+@devDependency mat-paper ExpandJS/mat-paper#0.9.1
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -206,24 +206,24 @@ It can be used in conjunction with mat-list.
                     <div id="matItemMain">
                         <template is="dom-if" if="[[inset]]" restamp>
                             <template is="dom-if" if="[[_isPrimaryAvatar(primaryType)]]" restamp><mat-avatar background="[[_computePrimaryBackground(active, primaryActiveBackground, primaryBackground)]]" color="[[_computePrimaryColor(active, primaryActiveColor, primaryColor)]]" icon="[[primaryIcon]]" icon-src="[[primaryIconSrc]]" tabindex="-1" primary action></mat-avatar></template>
-                            <template is="dom-if" if="[[_isPrimaryButton(primaryType)]]" restamp><mat-icon-button active="[[active]]" activeIcon="[[primaryActiveIcon]]" activeIconSrc="[[primaryActiveIconSrc]]" color="[[_computePrimaryColor(active, primaryActiveColor, primaryColor)]]" icon="[[primaryIcon]]" iconSrc="[[primaryIconSrc]]" tabindex="-1" toggleable primary action></mat-icon-button></template>
+                            <template is="dom-if" if="[[_isPrimaryButton(primaryType)]]" restamp><mat-icon-button active="[[active]]" active-icon="[[primaryActiveIcon]]" active-icon-src="[[primaryActiveIconSrc]]" color="[[_computePrimaryColor(active, primaryActiveColor, primaryColor)]]" icon="[[primaryIcon]]" icon-src="[[primaryIconSrc]]" tabindex="-1" toggleable primary action></mat-icon-button></template>
                             <template is="dom-if" if="[[_isPrimaryCheckbox(primaryType)]]" restamp><mat-checkbox model="[[active]]" tabindex="-1" primary action></mat-checkbox></template>
                         </template>
                         <div id="matItemText">
-                            <template is="dom-if" if="[[label]]"><div id="matItemLabel">{{label}}</div></template>
-                            <template is="dom-if" if="[[description]]"><mat-ink id="matItemDescription" opacity="secondary">{{description}}</mat-ink></template>
+                            <template is="dom-if" if="[[label]]" restamp><div id="matItemLabel">{{label}}</div></template>
+                            <template is="dom-if" if="[[description]]" restamp><mat-ink id="matItemDescription" opacity="secondary">{{description}}</mat-ink></template>
                             <div id="matItemBody"><content id="content"></content></div>
                         </div>
                     </div>
                 </a>
             </div>
             <div id="matItemSecondary" on-xp-active="_handleSecondary" on-xp-activate="_handleSecondary" on-xp-input-change="_handleSecondary">
-                <template is="dom-if" if="[[!emptySecondary]]">
-                    <template is="dom-if" if="[[secondaryText]]"><div id="matItemSecondaryText">{{secondaryText}}</div></template>
-                    <template is="dom-if" if="[[secondaryMenu]]"><mat-menu-button color="[[secondaryColor]]" data="[[data]]" disabled="[[secondaryDisabled]]" target="{{secondaryMenu}}" tabIndex="{{bindableTabIndex}}" on-mousedown="_handleStop" on-click="_handleStop" on-mouseup="_handleStop" secondary action></mat-menu-button></template>
-                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryMenu, secondaryType)]]"><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="{{secondaryTarget}}" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" on-mousedown="_handleStop" on-click="_handleStop" on-mouseup="_handleStop" secondary action></mat-avatar></template>
-                    <template is="dom-if" if="[[_isSecondaryButton(secondaryMenu, secondaryType)]]"><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" on-mousedown="_handleStop" on-click="_handleStop" on-mouseup="_handleStop" secondary action></mat-icon-button></template>
-                    <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryMenu, secondaryType)]]"><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-mousedown="_handleStop" on-click="_handleStop" on-mouseup="_handleStop" secondary action></mat-checkbox></template>
+                <template is="dom-if" if="[[!emptySecondary]]" restamp>
+                    <template is="dom-if" if="[[secondaryText]]" restamp><div id="matItemSecondaryText">{{secondaryText}}</div></template>
+                    <template is="dom-if" if="[[secondaryMenu]]" restamp><mat-menu-button color="[[secondaryColor]]" data="[[data]]" disabled="[[secondaryDisabled]]" target="{{secondaryMenu}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-menu-button></template>
+                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryMenu, secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="{{secondaryTarget}}" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
+                    <template is="dom-if" if="[[_isSecondaryButton(secondaryMenu, secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
+                    <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryMenu, secondaryType)]]" restamp><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-checkbox></template>
                 </template>
             </div>
             <mat-ripple context="[[self]]" id="matItemRipple"></mat-ripple>
