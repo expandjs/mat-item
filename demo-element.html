@@ -1,6 +1,7 @@
 <link rel="import" href="../mat-demo/mat-demo.html">
 <link rel="import" href="../mat-icons/file-icons.html">
 <link rel="import" href="../mat-icons/toggle-icons.html">
+<link rel="import" href="../mat-list/mat-list.html">
 <link rel="import" href="../mat-menu/mat-menu.html">
 <link rel="import" href="../mat-option/mat-option.html">
 <link rel="import" href="../mat-paper/mat-paper.html">
@@ -8,86 +9,153 @@
 
 <dom-module id="mat-item-demo">
 
-    <style>
-        :host .demo-container {
-            margin: auto;
-            max-width: 320px;
-            padding: 8px 0;
-        }
-    </style>
-
     <template>
-        <mat-demo label="mat-item">
 
-            <div class="demo-title">Default</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Default" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item label="Label"></mat-item>
+                    <mat-item label="Label" description="Description"></mat-item>
+                    <mat-item label="Label" description="Description">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item label="Label"></mat-item>
                 <mat-item label="Label" description="Description"></mat-item>
                 <mat-item label="Label" description="Description">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Icon</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Icon" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item primary-icon="file:folder" label="Normal"></mat-item>
+                    <mat-item primary-icon="file:folder" label="Toggleable" description="Description" primary-active-color="red" toggleable></mat-item>
+                    <mat-item primary-icon="file:folder" label="Colored" description="Description" primary-color="light-blue">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item primary-icon="file:folder" label="Normal"></mat-item>
                 <mat-item primary-icon="file:folder" label="Toggleable" description="Description" primary-active-color="red" toggleable></mat-item>
                 <mat-item primary-icon="file:folder" label="Colored" description="Description" primary-color="light-blue">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Avatar</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Avatar" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item primary-type="avatar" label="Normal" primary-icon="file:folder"></mat-item>
+                    <mat-item primary-type="avatar" label="Toggleable" description="Description" primary-active-background="light-blue" primary-icon="file:folder" toggleable></mat-item>
+                    <mat-item primary-type="avatar" label="Image" description="Description" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item primary-type="avatar" label="Normal" primary-icon="file:folder"></mat-item>
                 <mat-item primary-type="avatar" label="Toggleable" description="Description" primary-active-background="light-blue" primary-icon="file:folder" toggleable></mat-item>
                 <mat-item primary-type="avatar" label="Image" description="Description" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Checkbox</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Checkbox" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item primary-type="checkbox" label="Label"></mat-item>
+                    <mat-item primary-type="checkbox" label="Label" description="Description"></mat-item>
+                    <mat-item primary-type="checkbox" label="Label" description="Description">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item primary-type="checkbox" label="Label"></mat-item>
                 <mat-item primary-type="checkbox" label="Label" description="Description"></mat-item>
                 <mat-item primary-type="checkbox" label="Label" description="Description">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Secondary icon</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Secondary icon" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item label="Normal" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-type="icon"></mat-item>
+                    <mat-item label="Toggleable" description="Description" secondary-active-color="amber" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-toggleable></mat-item>
+                    <mat-item label="Colored" description="Description" secondary-color="amber" secondary-icon="toggle:star" secondary-type="icon">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item label="Normal" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-type="icon"></mat-item>
                 <mat-item label="Toggleable" description="Description" secondary-active-color="amber" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-toggleable></mat-item>
                 <mat-item label="Colored" description="Description" secondary-color="amber" secondary-icon="toggle:star" secondary-type="icon">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Secondary avatar</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Secondary avatar" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item secondary-type="avatar" label="Normal" secondary-icon="file:folder"></mat-item>
+                    <mat-item secondary-type="avatar" label="Toggleable" description="Description" secondary-active-background="light-blue" secondary-icon="file:folder" secondary-toggleable></mat-item>
+                    <mat-item secondary-type="avatar" label="Image" description="Description" secondary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item secondary-type="avatar" label="Normal" secondary-icon="file:folder"></mat-item>
                 <mat-item secondary-type="avatar" label="Toggleable" description="Description" secondary-active-background="light-blue" secondary-icon="file:folder" secondary-toggleable></mat-item>
                 <mat-item secondary-type="avatar" label="Image" description="Description" secondary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Secondary checkbox</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Secondary checkbox" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item secondary-type="checkbox" label="Label"></mat-item>
+                    <mat-item secondary-type="checkbox" label="Label" description="Description"></mat-item>
+                    <mat-item secondary-type="checkbox" label="Label" description="Description">Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item secondary-type="checkbox" label="Label"></mat-item>
                 <mat-item secondary-type="checkbox" label="Label" description="Description"></mat-item>
                 <mat-item secondary-type="checkbox" label="Label" description="Description">Content</mat-item>
-            </mat-paper>
+            </mat-list>
+        </mat-demo>
 
-            <div class="demo-title">Secondary menu</div>
-            <mat-paper class="demo-container" z="2">
-                <mat-item secondary-menu="demoMenu" label="Label"></mat-item>
-                <mat-item secondary-menu="demoMenu" label="Label" description="Description"></mat-item>
-                <mat-item secondary-menu="demoMenu" label="Label" description="Description">Content</mat-item>
+        <mat-demo label="Secondary menu" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item secondary-menu="demoMenu" label="Label"></mat-item>
+                    <mat-item secondary-menu="demoMenu" label="Label" description="Description"></mat-item>
+                    <mat-item secondary-menu="demoMenu" label="Label" description="Description">Content</mat-item>
+                </mat-list>
                 <mat-menu id="demoMenu">
                     <mat-option label="Option 1"></mat-option>
                     <mat-option label="Option 2"></mat-option>
                     <mat-option label="Option 3"></mat-option>
                 </mat-menu>
-            </mat-paper>
+            </script>
+            <mat-list>
+                <mat-item secondary-menu="demoMenu" label="Label"></mat-item>
+                <mat-item secondary-menu="demoMenu" label="Label" description="Description"></mat-item>
+                <mat-item secondary-menu="demoMenu" label="Label" description="Description">Content</mat-item>
+            </mat-list>
+            <mat-menu id="demoMenu">
+                <mat-option label="Option 1"></mat-option>
+                <mat-option label="Option 2"></mat-option>
+                <mat-option label="Option 3"></mat-option>
+            </mat-menu>
+        </mat-demo>
 
-            <div class="demo-title">Secondary text</div>
-            <mat-paper class="demo-container" z="2">
+        <mat-demo label="Secondary text" padding-disabled>
+            <script type="text/html">
+                <mat-list>
+                    <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label"></mat-item>
+                    <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label" description="Description"></mat-item>
+                    <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label" description="Description" secondary-active-color="amber" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-toggleable>Content</mat-item>
+                </mat-list>
+            </script>
+            <mat-list>
                 <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label"></mat-item>
                 <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label" description="Description"></mat-item>
-                <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label" description="Description" secondary-active-color="amber" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline"secondary-toggleable>Content</mat-item>
-            </mat-paper>
-
+                <mat-item primary-type="avatar" primary-icon-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSrMWEFsQUah7yjvKE8SX9jptOcgpMC-CdP5MxPyJzHsRXFT03Rrw" secondary-text="12:30" label="Label" description="Description" secondary-active-color="amber" secondary-active-icon="toggle:star" secondary-icon="toggle:star-outline" secondary-toggleable>Content</mat-item>
+            </mat-list>
         </mat-demo>
+
     </template>
 
     <script>
