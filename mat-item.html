@@ -816,8 +816,6 @@ It can be used in conjunction with mat-list.
                 XP.onMutation(self, self.mutated.bind(self), {attributes: true, childList: true, subtree: true, attributeFilter: ['tabindex']});
             },
 
-            /*********************************************************************/
-
             // LISTENER
             ready: function () {
                 this._setAnchor(this.$.matItemAnchor);
@@ -827,14 +825,21 @@ It can be used in conjunction with mat-list.
 
             // HANDLER
             _handleSecondary: function (event) {
+
+                // Vars
                 var self = this;
-                console.log(event, XP.matches(event.detail.firer, '[secondary][action]'));
-                if (XP.matches(event.detail.firer, '[secondary][action]')) { event.stopPropagation(); } else { return; }
+
+                // Stopping
+                event.stopPropagation();
+
+                // Overriding
                 if (self.fire(event.type, XP.assign(event.detail, {firer: self, isSecondary: true}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
             },
 
             // HANDLER
             _handleStop: function (event) {
+
+                // Stopping
                 event.stopPropagation();
             }
         });
