@@ -828,6 +828,7 @@ It can be used in conjunction with mat-list.
             // HANDLER
             _handleSecondary: function (event) {
                 var self = this;
+                console.log(event, XP.matches(event.detail.firer, '[secondary][action]'));
                 if (XP.matches(event.detail.firer, '[secondary][action]')) { event.stopPropagation(); } else { return; }
                 if (self.fire(event.type, XP.assign(event.detail, {firer: self, isSecondary: true}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
             },
