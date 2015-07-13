@@ -22,25 +22,25 @@ It can be used in conjunction with mat-list.
 @behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.3
+@dependency expandjs ExpandJS/expandjs#0.9.4
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-avatar ExpandJS/mat-avatar#0.9.3
-@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.3
-@dependency mat-divider ExpandJS/mat-divider#0.9.3
-@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.3
-@dependency mat-ink ExpandJS/mat-ink#0.9.3
-@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.3
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.3
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.3
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.3
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.3
+@dependency mat-avatar ExpandJS/mat-avatar#0.9.4
+@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.4
+@dependency mat-divider ExpandJS/mat-divider#0.9.4
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.4
+@dependency mat-ink ExpandJS/mat-ink#0.9.4
+@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.4
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.4
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.4
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.3
-@devDependency mat-icons ExpandJS/mat-icons#0.9.3
-@devDependency mat-list ExpandJS/mat-list#0.9.3
-@devDependency mat-menu ExpandJS/mat-menu#0.9.3
-@devDependency mat-option ExpandJS/mat-option#0.9.3
-@devDependency mat-paper ExpandJS/mat-paper#0.9.3
+@devDependency mat-demo ExpandJS/mat-demo#0.9.4
+@devDependency mat-icons ExpandJS/mat-icons#0.9.4
+@devDependency mat-list ExpandJS/mat-list#0.9.4
+@devDependency mat-menu ExpandJS/mat-menu#0.9.4
+@devDependency mat-option ExpandJS/mat-option#0.9.4
+@devDependency mat-paper ExpandJS/mat-paper#0.9.4
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -826,14 +826,11 @@ It can be used in conjunction with mat-list.
             // HANDLER
             _handleSecondary: function (event) {
 
-                // Vars
-                var self = this;
-
                 // Stopping
                 event.stopPropagation();
 
                 // Overriding
-                if (self.fire(event.type, XP.assign(event.detail, {firer: self, isSecondary: true}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+                if (this.fire(event.type, XP.assign(event.detail, {firer: this, isSecondary: true}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
             },
 
             // HANDLER
