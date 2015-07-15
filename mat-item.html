@@ -224,7 +224,7 @@ It can be used in conjunction with mat-list.
                     <template is="dom-if" if="[[secondaryText]]" restamp><div id="matItemSecondaryText">{{secondaryText}}</div></template>
                     <template is="dom-if" if="[[secondaryMenu]]" restamp><mat-menu-button color="[[secondaryColor]]" data="[[data]]" disabled="[[secondaryDisabled]]" target="{{secondaryMenu}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-menu-button></template>
                     <template is="dom-if" if="[[_isSecondaryAvatar(secondaryMenu, secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="{{secondaryTarget}}" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
-                    <template is="dom-if" if="[[_isSecondaryButton(secondaryMenu, secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
+                    <template is="dom-if" if="[[_isSecondaryButton(secondaryMenu, secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" inactive-dim="[[secondaryInactiveDim]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
                     <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryMenu, secondaryType)]]" restamp><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-checkbox></template>
                 </template>
             </div>
@@ -619,6 +619,19 @@ It can be used in conjunction with mat-list.
                     reflectToAttribute: true,
                     type: String,
                     value: null
+                },
+
+                /**
+                 * If set to true, the secondary icon is dimmed on inactive state.
+                 *
+                 * @attribute secondary-inactive-dim
+                 * @type boolean
+                 * @default false
+                 */
+                secondaryInactiveDim: {
+                    reflectToAttribute: true,
+                    type: Boolean,
+                    value: false
                 },
 
                 /**
