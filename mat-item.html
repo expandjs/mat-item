@@ -18,30 +18,30 @@ It can be used in conjunction with mat-list.
 @homepage http://expandjs.com/elements/mat-item
 @demo http://expandjs.com/demo/mat-item
 
-@behavior xp-anchor-behavior http://expandjs.com/elements/xp-anchor-behavior
-@behavior xp-pressed-behavior http://expandjs.com/elements/xp-pressed-behavior
-@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+@behavior xp-anchor-behavior /bower_components/xp-anchor-behavior/xp-anchor-behavior.html
+@behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
+@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-avatar ExpandJS/mat-avatar#0.9.4
-@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.4
-@dependency mat-divider ExpandJS/mat-divider#0.9.4
-@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.4
-@dependency mat-ink ExpandJS/mat-ink#0.9.4
-@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.4
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.4
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.4
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.4
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
+@dependency mat-avatar ExpandJS/mat-avatar#0.9.5
+@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.5
+@dependency mat-divider ExpandJS/mat-divider#0.9.5
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.5
+@dependency mat-ink ExpandJS/mat-ink#0.9.5
+@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.5
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.5
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.5
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.5
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.4
-@devDependency mat-icons ExpandJS/mat-icons#0.9.4
-@devDependency mat-list ExpandJS/mat-list#0.9.4
-@devDependency mat-menu ExpandJS/mat-menu#0.9.4
-@devDependency mat-option ExpandJS/mat-option#0.9.4
-@devDependency mat-paper ExpandJS/mat-paper#0.9.4
+@devDependency mat-demo ExpandJS/mat-demo#0.9.5
+@devDependency mat-icons ExpandJS/mat-icons#0.9.5
+@devDependency mat-list ExpandJS/mat-list#0.9.5
+@devDependency mat-menu ExpandJS/mat-menu#0.9.5
+@devDependency mat-option ExpandJS/mat-option#0.9.5
+@devDependency mat-paper ExpandJS/mat-paper#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -116,6 +116,7 @@ It can be used in conjunction with mat-list.
 
         :host #matItemAnchor {
             display: block;
+            outline: 0;
             overflow: hidden;
             text-decoration: none;
         }
@@ -204,7 +205,7 @@ It can be used in conjunction with mat-list.
         <mat-ink id="matItemWrapper" disabled="[[disabled]]">
             <mat-divider id="matItemDivider" inset="[[inset]]" baseline></mat-divider>
             <div id="matItemPrimary" on-xp-active="_handleStop" on-xp-activate="_handleStop" on-xp-input-change="_handleStop">
-                <a id="matItemAnchor">
+                <a id="matItemAnchor" tabindex="-1">
                     <div id="matItemMain">
                         <template is="dom-if" if="[[inset]]" restamp>
                             <template is="dom-if" if="[[_isPrimaryAvatar(primaryType)]]" restamp><mat-avatar background="[[_computePrimaryBackground(active, primaryActiveBackground, primaryBackground)]]" color="[[_computePrimaryColor(active, primaryActiveColor, primaryColor)]]" icon="[[primaryIcon]]" icon-src="[[primaryIconSrc]]" tabindex="-1" primary action></mat-avatar></template>
