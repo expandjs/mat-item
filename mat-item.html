@@ -7,9 +7,57 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to display a material item.
+An element used to display a [Material Design list item](http://www.google.com/design/spec/components/lists.html#lists-content).
 
-It can be used in conjunction with mat-list.
+You can pass content to an item to make it fit your needs.
+
+```html
+<mat-item label="My label"></mat-item>
+<mat-item label="My label" description="My description"></mat-item>
+<mat-item label="My label" description="My description">My content</mat-item>
+```
+
+Additionally, it can have
+[icons](https://expandjs.com/elements/mat-icon),
+[buttons](https://expandjs.com/elements/mat-icon-button),
+[avatars](https://expandjs.com/elements/mat-avatar) or
+[checkboxes](https://expandjs.com/elements/mat-checkbox).
+
+These are split into two categories:
+ - __primary-*__ will be part of the item and all the interactions are done through the item itself
+ - __secondary-*__ will create a whole new touch target, on the right side of the item
+
+The following item will have an avatar on the left side (primary)...
+
+```html
+<mat-item label="My directory" primary-icon="file:folder" primary-type="avatar">
+```
+
+...this other one instead, will have also a checkbox on to the right side (secondary).
+
+```html
+<mat-item label="Michelle" primary-src="/contacts/michelle.png" primary-type="avatar" secondary-type="checkbox">
+```
+
+The item can be used to do a lot of things, such as linking to external resources, opening additional overlays,
+doing custom actions via listeners etc. Also, the combination of `primary` and `secondary`, plus the custom content,
+creates endless possibilities.
+
+```html
+<mat-item
+    label="Michelle"
+    description="Lorem ipsum dolor sit amet..."
+    primary-src="/contacts/michelle.png"
+    primary-type="avatar"
+    secondary-icon="navigation:more-vert"
+    secondary-target="contactMenu"
+    secondary-toggles-target
+    target="contactInfo"
+    toggles-target></mat-item>
+
+<mat-dialog id="contactInfo" full-screen>...</mat-dialog>
+<mat-menu id="contactMenu">...</mat-menu>
+```
 
 @element mat-item
 @description A custom element used to display a Material Design item
@@ -30,8 +78,8 @@ It can be used in conjunction with mat-list.
 @dependency mat-checkbox ExpandJS/mat-checkbox#0.9.5
 @dependency mat-divider ExpandJS/mat-divider#0.9.5
 @dependency mat-icon-button ExpandJS/mat-icon-button#0.9.5
+@dependency mat-icons ExpandJS/mat-icons#0.9.5
 @dependency mat-ink ExpandJS/mat-ink#0.9.5
-@dependency mat-menu-button ExpandJS/mat-menu-button#0.9.5
 @dependency mat-ripple ExpandJS/mat-ripple#0.9.5
 @dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.5
 @dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.5
@@ -52,8 +100,8 @@ It can be used in conjunction with mat-list.
 <link rel="import" href="../mat-checkbox/mat-checkbox.html">
 <link rel="import" href="../mat-divider/mat-divider.html">
 <link rel="import" href="../mat-icon-button/mat-icon-button.html">
+<link rel="import" href="../mat-icons/navigation-icons.html">
 <link rel="import" href="../mat-ink/mat-ink.html">
-<link rel="import" href="../mat-menu-button/mat-menu-button.html">
 <link rel="import" href="../mat-ripple/mat-ripple.html">
 <link rel="import" href="../xp-anchor-behavior/xp-anchor-behavior.html">
 <link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
@@ -205,7 +253,7 @@ It can be used in conjunction with mat-list.
     <template>
         <mat-ink id="matItemWrapper" disabled="[[disabled]]">
             <mat-divider id="matItemDivider" inset="[[inset]]" baseline></mat-divider>
-            <div id="matItemPrimary" on-xp-active="_handleStop" on-xp-activate="_handleStop" on-xp-input-change="_handleStop">
+            <div id="matItemPrimary" on-xp-active="_handleStop" on-xp-activate="_handleStop" on-xp-input-change="_handlePrimary">
                 <a id="matItemAnchor" tabindex="-1">
                     <div id="matItemMain">
                         <template is="dom-if" if="[[inset]]" restamp>
@@ -224,10 +272,9 @@ It can be used in conjunction with mat-list.
             <div id="matItemSecondary" on-xp-active="_handleSecondary" on-xp-activate="_handleSecondary" on-xp-input-change="_handleSecondary">
                 <template is="dom-if" if="[[!emptySecondary]]" restamp>
                     <template is="dom-if" if="[[secondaryText]]" restamp><div id="matItemSecondaryText">{{secondaryText}}</div></template>
-                    <template is="dom-if" if="[[secondaryMenu]]" restamp><mat-menu-button color="[[secondaryColor]]" data="[[data]]" disabled="[[secondaryDisabled]]" target="{{secondaryMenu}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-menu-button></template>
-                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryMenu, secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="{{secondaryTarget}}" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
-                    <template is="dom-if" if="[[_isSecondaryButton(secondaryMenu, secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" inactive-dim="[[secondaryInactiveDim]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
-                    <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryMenu, secondaryType)]]" restamp><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-checkbox></template>
+                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="{{secondaryTarget}}" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" toggles-target="[[secondaryTogglesTarget]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
+                    <template is="dom-if" if="[[_isSecondaryButton(secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" dimmed="[[secondaryDimmed]]" disabled="[[secondaryDisabled]]" icon="[[_computeSecondaryIcon(secondaryIcon, secondaryTarget, secondaryTogglesTarget)]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="{{secondaryTarget}}" toggleable="[[secondaryToggleable]]" toggles-target="[[secondaryTogglesTarget]]" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
+                    <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryType)]]" restamp><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-down="_handleStop" on-click="_handleStop" on-up="_handleStop" secondary action></mat-checkbox></template>
                 </template>
             </div>
             <mat-ripple context="[[self]]" id="matItemRipple"></mat-ripple>
@@ -332,7 +379,7 @@ It can be used in conjunction with mat-list.
                  * @readonly
                  */
                 emptySecondary: {
-                    computed: '_computeEmptySecondary(secondaryType, secondaryIcon, secondaryIconSrc, secondaryMenu, secondaryText)',
+                    computed: '_computeEmptySecondary(secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryTogglesTarget, secondaryType)',
                     notify: true,
                     reflectToAttribute: true,
                     type: Boolean
@@ -626,26 +673,14 @@ It can be used in conjunction with mat-list.
                 /**
                  * If set to true, the secondary icon is dimmed on inactive state.
                  *
-                 * @attribute secondary-inactive-dim
+                 * @attribute secondary-dimmed
                  * @type boolean
                  * @default false
                  */
-                secondaryInactiveDim: {
+                secondaryDimmed: {
                     reflectToAttribute: true,
                     type: Boolean,
                     value: false
-                },
-
-                /**
-                 * The menu to toggle on secondary press.
-                 *
-                 * @attribute secondary-menu
-                 * @type Element | string
-                 * @notifies
-                 */
-                secondaryMenu: {
-                    notify: true,
-                    value: null
                 },
 
                 /**
@@ -674,6 +709,18 @@ It can be used in conjunction with mat-list.
                 },
 
                 /**
+                 * The item's secondary text.
+                 *
+                 * @attribute secondary-text
+                 * @type string
+                 */
+                secondaryText: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
                  * If set to true, the secondary action is toggleable.
                  *
                  * @attribute secondary-toggleable
@@ -687,15 +734,16 @@ It can be used in conjunction with mat-list.
                 },
 
                 /**
-                 * The item's secondary text.
+                 * If set to true, the secondary target's `toggle` method is called on press.
                  *
-                 * @attribute secondary-text
-                 * @type string
+                 * @attribute secondary-toggles-target
+                 * @type boolean
+                 * @default false
                  */
-                secondaryText: {
+                secondaryTogglesTarget: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: Boolean,
+                    value: false
                 },
 
                 /**
@@ -745,8 +793,8 @@ It can be used in conjunction with mat-list.
             },
 
             // COMPUTER
-            _computeEmptySecondary: function (secondaryType, secondaryIcon, secondaryIconSrc, secondaryMenu, secondaryText) {
-                return secondaryType !== 'checkbox' && !secondaryIcon && !secondaryIconSrc && !secondaryMenu && !secondaryText;
+            _computeEmptySecondary: function (secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryTogglesTarget, secondaryType) {
+                return !secondaryIcon && !secondaryIconSrc && (!secondaryTarget || !secondaryTogglesTarget) && !secondaryText && secondaryType !== 'checkbox';
             },
 
             // COMPUTER
@@ -775,6 +823,11 @@ It can be used in conjunction with mat-list.
             },
 
             // COMPUTER
+            _computeSecondaryIcon: function (secondaryIcon, secondaryTarget, secondaryTogglesTarget) {
+                return secondaryIcon || (secondaryTarget && secondaryTogglesTarget && 'navigation:more-vert') || null;
+            },
+
+            // COMPUTER
             _isPrimaryAvatar: function (primaryType) {
                 return primaryType === 'avatar';
             },
@@ -790,18 +843,18 @@ It can be used in conjunction with mat-list.
             },
 
             // COMPUTER
-            _isSecondaryAvatar: function (secondaryMenu, secondaryType) {
-                return !secondaryMenu && secondaryType === 'avatar';
+            _isSecondaryAvatar: function (secondaryType) {
+                return secondaryType === 'avatar';
             },
 
             // COMPUTER
-            _isSecondaryButton: function (secondaryMenu, secondaryType) {
-                return !secondaryMenu && secondaryType !== 'avatar' && secondaryType !== 'checkbox';
+            _isSecondaryButton: function (secondaryType) {
+                return secondaryType !== 'avatar' && secondaryType !== 'checkbox';
             },
 
             // COMPUTER
-            _isSecondaryCheckbox: function (secondaryMenu, secondaryType) {
-                return !secondaryMenu && secondaryType === 'checkbox';
+            _isSecondaryCheckbox: function (secondaryType) {
+                return secondaryType === 'checkbox';
             },
 
             /*********************************************************************/
@@ -838,6 +891,16 @@ It can be used in conjunction with mat-list.
             },
 
             /*********************************************************************/
+
+            // HANDLER
+            _handlePrimary: function (event) {
+
+                // Stopping
+                event.stopPropagation();
+
+                // Overriding
+                if (this.fire(event.type, XP.assign(event.detail, {firer: this}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+            },
 
             // HANDLER
             _handleSecondary: function (event) {
