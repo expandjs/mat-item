@@ -107,12 +107,6 @@ creates endless possibilities.
 <link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
 <link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
 
-<style>
-    html [inset] mat-item:not([inset]) #matItemText {
-        padding-left: 72px;
-    }
-</style>
-
 <dom-module id="mat-item">
 
     <link rel="import" type="css" href="../xp-pressed-behavior/xp-pressed-behavior.css">
@@ -182,6 +176,10 @@ creates endless possibilities.
 
         :host([empty-body]:not([empty-description])) #matItemText {
             padding: 15px 16px 13px 16px;
+        }
+
+        :host-context([inset]) #matItemDivider:not([inset]) + #matItemPrimary #matItemText {
+            padding-left: 72px;
         }
 
         :host #matItemLabel {
