@@ -109,168 +109,167 @@ creates endless possibilities.
 
 <dom-module id="mat-item">
 
-    <link rel="import" type="css" href="../xp-pressed-behavior/xp-pressed-behavior.css">
-
-    <style>
-        :host {
-            display: block;
-            min-height: 48px;
-            text-align: left;
-        }
-
-        :host [action] {
-            display: block;
-            margin: 4px 8px;
-        }
-
-        :host mat-avatar[action] {
-            margin: 8px 16px;
-        }
-
-        :host [primary][action] {
-            pointer-events: none;
-        }
-
-        :host(:not([empty-body]):not([inline-content])) [action] {
-            margin-top: 8px;
-        }
-
-        :host(:not([empty-body]):not([inline-content])) mat-avatar[action] {
-            margin-top: 16px;
-        }
-
-        :host(:not([empty-body]):not([inline-content])) [primary][action] {
-            @apply(--layout-self-start);
-        }
-
-        :host #matItemWrapper,
-        :host #matItemMain {
-            @apply(--layout-horizontal);
-            @apply(--layout-center);
-        }
-
-        :host #matItemDivider {
-            display: none;
-        }
-
-        :host #matItemPrimary {
-            @apply(--layout-flex);
-            overflow: hidden;
-        }
-
-        :host #matItemPrimary mat-avatar[action] {
-            margin-right: 0;
-        }
-
-        :host #matItemAnchor {
-            display: block;
-            outline: 0;
-            overflow: hidden;
-            text-decoration: none;
-        }
-
-        :host #matItemAnchor[href]:hover {
-            text-decoration: underline;
-        }
-
-        :host #matItemText {
-            @apply(--layout-flex);
-            overflow: hidden;
-            padding: 11px 16px 13px 16px;
-        }
-
-        :host([inline-content]) #matItemText {
-            @apply(--layout-horizontal);
-            @apply(--layout-center);
-        }
-
-        :host([empty-body]:not([empty-description]):not([inline-content])) #matItemText {
-            padding: 15px 16px 13px 16px;
-        }
-
-        :host-context([inset]) #matItemDivider:not([inset]) + #matItemPrimary #matItemText {
-            padding-left: 72px;
-        }
-
-        :host #matItemLabel {
-            @apply(--mat-font-subhead);
-            overflow: hidden;
-            text-overflow: ellipsis !important; /* override */
-            white-space: nowrap !important; /* override */
-        }
-
-        :host #matItemDescription {
-            @apply(--mat-font-body);
-            overflow: hidden;
-            text-overflow: ellipsis !important; /* override */
-            white-space: nowrap !important; /* override */
-        }
-
-        :host([inline-content]) #matItemDescription {
-            @apply(--mat-font-subhead);
-        }
-
-        :host #matItemBody {
-            @apply(--mat-font-body);
-        }
-
-        :host([inline-content]) #matItemBody {
-            @apply(--layout-horizontal);
-            @apply(--layout-center);
-            @apply(--layout-end-justified);
-            @apply(--layout-flex);
-            @apply(--mat-font-subhead);
-        }
-
-        :host([empty-body]) #matItemBody {
-            display: none !important;
-        }
-
-        :host #matItemSecondary {
-            text-align: right;
-        }
-
-        :host([empty-secondary]) #matItemSecondary {
-            display: none !important;
-        }
-
-        :host([secondary-no-tap]) #matItemSecondary {
-            pointer-events: none !important;
-        }
-
-        :host([secondary-text]:not([secondary-text=""])) #matItemSecondary,
-        :host(:not([empty-body]):not([inline-content])) #matItemSecondary {
-            @apply(--layout-self-start);
-        }
-
-        :host #matItemSecondary [action] {
-            margin-left: -12px;
-        }
-
-        :host #matItemSecondary mat-avatar[action] {
-            margin-left: 0;
-        }
-
-        :host #matItemSecondaryText {
-            @apply(--mat-font-caption);
-            margin: 14px 16px 0 0;
-        }
-
-        :host([secondary-text=""]) #matItemSecondaryText,
-        :host(:not([secondary-text])) #matItemSecondaryText {
-            display: none !important;
-        }
-
-        :host([empty-body][primary-type="avatar"]) #matItemSecondaryText {
-            margin-top: 18px;
-        }
-
-        :host([active]:not([primary-type="checkbox"])) #matItemRipple::shadow #matRippleBackground {
-            opacity: 0.10;
-        }
-    </style>
-
     <template>
+
+        <style include="xp-pressed-styles">
+            :host {
+                display: block;
+                min-height: 48px;
+                text-align: left;
+            }
+
+            :host [action] {
+                display: block;
+                margin: 4px 8px;
+            }
+
+            :host mat-avatar[action] {
+                margin: 8px 16px;
+            }
+
+            :host [primary][action] {
+                pointer-events: none;
+            }
+
+            :host(:not([empty-body]):not([inline-content])) [action] {
+                margin-top: 8px;
+            }
+
+            :host(:not([empty-body]):not([inline-content])) mat-avatar[action] {
+                margin-top: 16px;
+            }
+
+            :host(:not([empty-body]):not([inline-content])) [primary][action] {
+                @apply(--layout-self-start);
+            }
+
+            :host #matItemWrapper,
+            :host #matItemMain {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+            }
+
+            :host #matItemDivider {
+                display: none;
+            }
+
+            :host #matItemPrimary {
+                @apply(--layout-flex);
+                overflow: hidden;
+            }
+
+            :host #matItemPrimary mat-avatar[action] {
+                margin-right: 0;
+            }
+
+            :host #matItemAnchor {
+                display: block;
+                outline: 0;
+                overflow: hidden;
+                text-decoration: none;
+            }
+
+            :host #matItemAnchor[href]:hover {
+                text-decoration: underline;
+            }
+
+            :host #matItemText {
+                @apply(--layout-flex);
+                overflow: hidden;
+                padding: 11px 16px 13px 16px;
+            }
+
+            :host([inline-content]) #matItemText {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+            }
+
+            :host([empty-body]:not([empty-description]):not([inline-content])) #matItemText {
+                padding: 15px 16px 13px 16px;
+            }
+
+            :host-context([inset]) #matItemDivider:not([inset]) + #matItemPrimary #matItemText {
+                padding-left: 72px;
+            }
+
+            :host #matItemLabel {
+                @apply(--mat-font-subhead);
+                overflow: hidden;
+                text-overflow: ellipsis !important; /* override */
+                white-space: nowrap !important; /* override */
+            }
+
+            :host #matItemDescription {
+                @apply(--mat-font-body);
+                overflow: hidden;
+                text-overflow: ellipsis !important; /* override */
+                white-space: nowrap !important; /* override */
+            }
+
+            :host([inline-content]) #matItemDescription {
+                @apply(--mat-font-subhead);
+            }
+
+            :host #matItemBody {
+                @apply(--mat-font-body);
+            }
+
+            :host([inline-content]) #matItemBody {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+                @apply(--layout-end-justified);
+                @apply(--layout-flex);
+                @apply(--mat-font-subhead);
+            }
+
+            :host([empty-body]) #matItemBody {
+                display: none !important;
+            }
+
+            :host #matItemSecondary {
+                text-align: right;
+            }
+
+            :host([empty-secondary]) #matItemSecondary {
+                display: none !important;
+            }
+
+            :host([secondary-no-tap]) #matItemSecondary {
+                pointer-events: none !important;
+            }
+
+            :host([secondary-text]:not([secondary-text=""])) #matItemSecondary,
+            :host(:not([empty-body]):not([inline-content])) #matItemSecondary {
+                @apply(--layout-self-start);
+            }
+
+            :host #matItemSecondary [action] {
+                margin-left: -12px;
+            }
+
+            :host #matItemSecondary mat-avatar[action] {
+                margin-left: 0;
+            }
+
+            :host #matItemSecondaryText {
+                @apply(--mat-font-caption);
+                margin: 14px 16px 0 0;
+            }
+
+            :host([secondary-text=""]) #matItemSecondaryText,
+            :host(:not([secondary-text])) #matItemSecondaryText {
+                display: none !important;
+            }
+
+            :host([empty-body][primary-type="avatar"]) #matItemSecondaryText {
+                margin-top: 18px;
+            }
+
+            :host([active]:not([primary-type="checkbox"])) #matItemRipple::shadow #matRippleBackground {
+                opacity: 0.10;
+            }
+        </style>
+
         <mat-ink id="matItemWrapper" disabled="[[disabled]]">
             <mat-divider id="matItemDivider" inset="[[inset]]" baseline></mat-divider>
             <div id="matItemPrimary" on-xp-active="_handleStop" on-xp-activate="_handleStop" on-xp-input-change="_handlePrimary">
@@ -299,6 +298,7 @@ creates endless possibilities.
             </div>
             <mat-ripple context="[[self]]" id="matItemRipple"></mat-ripple>
         </mat-ink>
+
     </template>
 
     <script>
