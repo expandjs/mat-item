@@ -45,15 +45,15 @@ creates endless possibilities.
 
 ```html
 <mat-item
-    label="Michelle"
+    behavior="toggle"
     description="Lorem ipsum dolor sit amet..."
+    label="Michelle"
     primary-src="/contacts/michelle.png"
     primary-type="avatar"
+    secondary-behavior="toggle"
     secondary-icon="navigation:more-vert"
     secondary-target="contactMenu"
-    secondary-toggles-target
-    target="contactInfo"
-    toggles-target></mat-item>
+    target="contactInfo"></mat-item>
 
 <mat-dialog id="contactInfo" full-screen>...</mat-dialog>
 <mat-menu id="contactMenu">...</mat-menu>
@@ -70,27 +70,29 @@ creates endless possibilities.
 @behavior xp-anchor-behavior /bower_components/xp-anchor-behavior/xp-anchor-behavior.html
 @behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
 @behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
+@behavior xp-refirer-behavior /bower_components/xp-referral-behavior/xp-refirer-behavior.html
 
 @dependency polymer Polymer/polymer#^1.1.0
-@dependency expandjs ExpandJS/expandjs#0.9.10
+@dependency expandjs ExpandJS/expandjs#0.9.11
 @dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
-@dependency mat-avatar ExpandJS/mat-avatar#0.9.10
-@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.10
-@dependency mat-divider ExpandJS/mat-divider#0.9.10
-@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.10
-@dependency mat-icons ExpandJS/mat-icons#0.9.10
-@dependency mat-ink ExpandJS/mat-ink#0.9.10
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.10
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.10
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.10
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.10
+@dependency mat-avatar ExpandJS/mat-avatar#0.9.11
+@dependency mat-checkbox ExpandJS/mat-checkbox#0.9.11
+@dependency mat-divider ExpandJS/mat-divider#0.9.11
+@dependency mat-icon-button ExpandJS/mat-icon-button#0.9.11
+@dependency mat-icons ExpandJS/mat-icons#0.9.11
+@dependency mat-ink ExpandJS/mat-ink#0.9.11
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.11
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.11
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.11
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.11
+@dependency xp-refirer-behavior ExpandJS/xp-refirer-behavior#0.9.11
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.10
-@devDependency mat-icons ExpandJS/mat-icons#0.9.10
-@devDependency mat-list ExpandJS/mat-list#0.9.10
-@devDependency mat-menu ExpandJS/mat-menu#0.9.10
-@devDependency mat-option ExpandJS/mat-option#0.9.10
-@devDependency mat-paper ExpandJS/mat-paper#0.9.10
+@devDependency mat-demo ExpandJS/mat-demo#0.9.11
+@devDependency mat-icons ExpandJS/mat-icons#0.9.11
+@devDependency mat-list ExpandJS/mat-list#0.9.11
+@devDependency mat-menu ExpandJS/mat-menu#0.9.11
+@devDependency mat-option ExpandJS/mat-option#0.9.11
+@devDependency mat-paper ExpandJS/mat-paper#0.9.11
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -106,6 +108,7 @@ creates endless possibilities.
 <link rel="import" href="../xp-anchor-behavior/xp-anchor-behavior.html">
 <link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
 <link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
+<link rel="import" href="../xp-refirer-behavior/xp-refirer-behavior.html">
 
 <dom-module id="mat-item">
 
@@ -293,8 +296,8 @@ creates endless possibilities.
             <div id="matItemSecondary" on-xp-active="_handleSecondary" on-xp-activate="_handleSecondary" on-xp-input-change="_handleSecondary">
                 <template is="dom-if" if="[[!emptySecondary]]" restamp>
                     <template is="dom-if" if="[[secondaryText]]" restamp><div id="matItemSecondaryText">{{secondaryText}}</div></template>
-                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="[[secondaryTarget]]" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" toggles-target="[[secondaryTogglesTarget]]" on-click="_handleStop" on-down="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
-                    <template is="dom-if" if="[[_isSecondaryButton(secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" dimmed="[[secondaryDimmed]]" disabled="[[secondaryDisabled]]" icon="[[_computeSecondaryIcon(secondaryIcon, secondaryTarget, secondaryTogglesTarget)]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="[[secondaryTarget]]" toggleable="[[secondaryToggleable]]" toggles-target="[[secondaryTogglesTarget]]" on-click="_handleStop" on-down="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
+                    <template is="dom-if" if="[[_isSecondaryAvatar(secondaryType)]]" restamp><mat-avatar active="{{secondaryActive}}" background="[[_computeSecondaryBackground(secondaryActive, secondaryActiveBackground, secondaryBackground)]]" behavior="[[secondaryBehavior]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" disabled="[[secondaryDisabled]]" icon="[[secondaryIcon]]" icon-src="[[secondaryIconSrc]]" target="[[secondaryTarget]]" tabindex="{{bindableTabIndex}}" toggleable="[[secondaryToggleable]]" on-click="_handleStop" on-down="_handleStop" on-up="_handleStop" secondary action></mat-avatar></template>
+                    <template is="dom-if" if="[[_isSecondaryButton(secondaryType)]]" restamp><mat-icon-button active="{{secondaryActive}}" active-icon="[[secondaryActiveIcon]]" active-icon-src="[[secondaryActiveIconSrc]]" behavior="[[secondaryBehavior]]" color="[[_computeSecondaryColor(secondaryActive, secondaryActiveColor, secondaryColor)]]" data="[[data]]" dimmed="[[secondaryDimmed]]" disabled="[[secondaryDisabled]]" icon="[[_computeSecondaryIcon(secondaryBehavior, secondaryIcon, secondaryTarget)]]" icon-src="[[secondaryIconSrc]]" tabindex="[[bindableTabIndex]]" target="[[secondaryTarget]]" toggleable="[[secondaryToggleable]]" on-click="_handleStop" on-down="_handleStop" on-up="_handleStop" secondary action></mat-icon-button></template>
                     <template is="dom-if" if="[[_isSecondaryCheckbox(secondaryType)]]" restamp><mat-checkbox changed="{{secondaryChanged}}" disabled="[[secondaryDisabled]]" model="{{secondaryValue}}" tabindex="{{bindableTabIndex}}" on-click="_handleStop" on-down="_handleStop" on-up="_handleStop" secondary action></mat-checkbox></template>
                 </template>
             </div>
@@ -313,7 +316,8 @@ creates endless possibilities.
             behaviors: [
                 Polymer.XPAnchorBehavior,
                 Polymer.XPPressedBehavior,
-                Polymer.XPReferralBehavior
+                Polymer.XPReferralBehavior,
+                Polymer.XPRefirerBehavior
             ],
 
             /*********************************************************************/
@@ -406,7 +410,7 @@ creates endless possibilities.
                  * @readonly
                  */
                 emptySecondary: {
-                    computed: '_computeEmptySecondary(secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryTogglesTarget, secondaryType)',
+                    computed: '_computeEmptySecondary(secondaryBehavior, secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryType)',
                     notify: true,
                     reflectToAttribute: true,
                     type: Boolean,
@@ -639,6 +643,18 @@ creates endless possibilities.
                 },
 
                 /**
+                 * Determines how the element behaves in relation to its secondary target.
+                 *
+                 * @attribute secondary-behavior
+                 * @type "injector" | "toggle"
+                 */
+                secondaryBehavior: {
+                    reflectToAttribute: true,
+                    type: String,
+                    value: null
+                },
+
+                /**
                  * If set to true, the secondary action is changed.
                  *
                  * @attribute secondary-changed
@@ -778,19 +794,6 @@ creates endless possibilities.
                 },
 
                 /**
-                 * If set to true, the secondary target's `toggle` method is called on press.
-                 *
-                 * @attribute secondary-toggles-target
-                 * @type boolean
-                 * @default false
-                 */
-                secondaryTogglesTarget: {
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: false
-                },
-
-                /**
                  * The item's secondary type.
                  *
                  * @attribute secondary-type
@@ -837,8 +840,8 @@ creates endless possibilities.
             },
 
             // COMPUTER
-            _computeEmptySecondary: function (secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryTogglesTarget, secondaryType) {
-                return !secondaryIcon && !secondaryIconSrc && (!secondaryTarget || !secondaryTogglesTarget) && !secondaryText && secondaryType !== 'checkbox';
+            _computeEmptySecondary: function (secondaryBehavior, secondaryIcon, secondaryIconSrc, secondaryTarget, secondaryText, secondaryType) {
+                return !secondaryIcon && !secondaryIconSrc && (!secondaryBehavior || !secondaryTarget) && !secondaryText && secondaryType !== 'checkbox';
             },
 
             // COMPUTER
@@ -867,8 +870,8 @@ creates endless possibilities.
             },
 
             // COMPUTER
-            _computeSecondaryIcon: function (secondaryIcon, secondaryTarget, secondaryTogglesTarget) {
-                return secondaryIcon || (secondaryTarget && secondaryTogglesTarget && 'navigation:more-vert') || null;
+            _computeSecondaryIcon: function (secondaryBehavior, secondaryIcon, secondaryTarget) {
+                return secondaryIcon || (secondaryTarget && secondaryBehavior && 'navigation:more-vert') || null;
             },
 
             // COMPUTER
@@ -939,21 +942,15 @@ creates endless possibilities.
             // HANDLER
             _handlePrimary: function (event) {
 
-                // Stopping
-                event.stopPropagation();
-
-                // Overriding
-                if (this.fire(event.type, XP.assign(event.detail, {firer: this}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+                // Refiring
+                this.refire(event, {firer: this});
             },
 
             // HANDLER
             _handleSecondary: function (event) {
 
-                // Stopping
-                event.stopPropagation();
-
-                // Overriding
-                if (this.fire(event.type, XP.assign(event.detail, {firer: this, isSecondary: true}), {cancelable: true}).defaultPrevented) { event.preventDefault(); }
+                // Refiring
+                this.refire(event, {firer: this, isSecondary: true});
             },
 
             // HANDLER
