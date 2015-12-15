@@ -89,6 +89,7 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
 @devDependency mat-checkbox ExpandJS/mat-checkbox#0.10.0
 @devDependency mat-demo ExpandJS/mat-demo#0.10.0
 @devDependency mat-icon-button ExpandJS/mat-icon-button#0.10.0
+@devDependency mat-icon ExpandJS/mat-icon#0.10.0
 @devDependency mat-icons ExpandJS/mat-icons#0.10.0
 @devDependency mat-list ExpandJS/mat-list#0.10.0
 @devDependency mat-menu ExpandJS/mat-menu#0.10.0
@@ -127,6 +128,7 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
             :host .main {
                 @apply(--layout-horizontal);
                 @apply(--layout-center);
+                box-sizing: border-box;
                 height: 100%;
             }
 
@@ -266,12 +268,17 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
                 pointer-events: auto;
             }
 
-            :host([primary-type="avatar"]) ::content .primary {
+            :host ::content .primary.avatar {
                 margin: 8px 0 8px 16px;
             }
 
-            :host([secondary-type="avatar"]) ::content .secondary {
+            :host ::content .secondary.avatar {
                 margin: 8px 16px 8px 0;
+            }
+
+            :host ::content .primary.icon,
+            :host ::content .secondary.icon {
+                margin: 12px 16px;
             }
 
             :host(:not([empty]):not([inline])) ::content .primary,
@@ -279,8 +286,10 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
                 margin-top: 8px;
             }
 
-            :host(:not([empty]):not([inline])[primary-type="avatar"]) ::content .primary,
-            :host(:not([empty]):not([inline])[secondary-type="avatar"]) ::content .secondary {
+            :host(:not([empty]):not([inline])) ::content .primary.avatar,
+            :host(:not([empty]):not([inline])) ::content .primary.icon,
+            :host(:not([empty]):not([inline])) ::content .secondary.avatar,
+            :host(:not([empty]):not([inline])) ::content .secondary.icon {
                 margin-top: 16px;
             }
 
@@ -288,7 +297,7 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
                 margin-top: 13px;
             }
 
-            :host([secondary-text]:not([secondary-text=""])[secondary-type="avatar"]) ::content .secondary {
+            :host([secondary-text]:not([secondary-text=""])) ::content .secondary.avatar {
                 display: none !important;
             }
         </style>
