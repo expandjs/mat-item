@@ -128,6 +128,7 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
             :host .main {
                 @apply(--layout-horizontal);
                 @apply(--layout-center);
+                overflow: hidden;
                 box-sizing: border-box;
                 height: 100%;
             }
@@ -145,7 +146,9 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
                 @apply(--layout-center);
                 @apply(--layout-flex);
                 min-height: 48px;
+                overflow: hidden;
                 position: relative;
+                width: 100%;
             }
 
             :host([inset]) .content {
@@ -159,7 +162,9 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
 
             :host .body {
                 @apply(--layout-flex);
+                overflow: hidden;
                 padding: 11px 16px 13px 16px;
+                overflow: hidden;
             }
 
             :host([inline]) .body {
