@@ -318,7 +318,7 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
                         <mat-ink class="description" disabled="[[disabled]]" opacity="secondary">[[description]]</mat-ink>
                         <mat-ink class="text" disabled="[[disabled]]"><content select=":not(.secondary)"></content></mat-ink>
                     </div>
-                    <div class="aside" on-xp-active="_handleRefire" on-xp-activate="_handleRefire">
+                    <div class="aside" on-click="_handlePrevent" on-xp-active="_handleRefire" on-xp-activate="_handleRefire">
                         <mat-ink class="secondary-text" disabled="[[disabled]]" opacity="secondary">[[secondaryText]]</mat-ink>
                         <content select=".secondary"></content>
                     </div>
@@ -641,6 +641,13 @@ Also, the combination of `primary` and `secondary`, plus the custom content, cre
 
                 // Super
                 Polymer.XPAnchorBehavior._anchorHandler.apply(self, arguments);
+            },
+
+            // HANDLER
+            _handlePrevent: function (event) {
+
+                // Preventing
+                event.selectPrevented = true;
             },
 
             // HANDLER
